@@ -1,6 +1,6 @@
 <div class="mt-1 px-1">
   <div class="card bg-light">
-    <div class="card-header bg-dark text-white">Order Details</div>
+    <div class="card-header bg-dark text-white">Detalles de Compra</div>
     <div class="card-body">
       <!-- spinner -->
       <div *ngIf="isLoading" class="spinner-border text-danger" role="status">
@@ -11,11 +11,11 @@
         <!-- warning -->
         <div *ngIf="isEmpty" class="alert alert-danger">{{ warning }}</div>
         <!-- warning -->
-        <span><fa name="calendar" class="mr-2"></fa>Shipping Details</span>
+        <span><fa name="calendar" class="mr-2"></fa>Detalles de envio</span>
         <hr />
         <!-- city -->
         <div class="form-group">
-          <label for="city">Select city:</label>
+          <label for="city">Seleccionar Ciudad:</label>
           <select
             type="text"
             name="city"

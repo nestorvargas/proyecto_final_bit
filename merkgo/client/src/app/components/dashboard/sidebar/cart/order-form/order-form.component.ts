@@ -19,15 +19,14 @@ export class OrderFormComponent implements OnInit {
   last = "";
   currentDate: string = "";
   cities: Array<String> = [
-    "Jerusalem",
-    "Tel-Aviv",
-    "Haifa",
-    "Ashdod",
-    "Rishon LeZiyyon",
-    "Petah Tikva",
-    "Beersheva",
-    "Holon",
-    "Bnei Brak"
+    "Bogota",
+    "Zipaquira",
+    "Tocancipa",
+    "Chia",
+    "Cota",
+    "Sopo",
+    "Cogua",
+    "Choachi"
   ];
   isEmpty: boolean = false;
   warning: string = "";
@@ -114,20 +113,20 @@ export class OrderFormComponent implements OnInit {
         this.count++;
         if (order && this.count == 2 && this.last !== order._id) {
           this.last = order._id;
-          let orderDates = `Order date: ${this.adjustDate(
+          let orderDates = `Fecha de Compra: ${this.adjustDate(
               this.getCurrentDate(order.user.order)
-            )}\tShipping date: ${this.adjustDate(this.getCurrentDate(order.user.ship))}`,
-            shipAddress = `Shipping address: ${order.user.street}, ${order.user.city}`,
+            )}\tfecha de envío: ${this.adjustDate(this.getCurrentDate(order.user.ship))}`,
+            shipAddress = `Dirección de envio: ${order.user.street}, ${order.user.city}`,
             userInfo = `[ ID: ${this.user.cardId} ] ${this.user.fname} ${this.user.lname}`,
             itemsTXT = "";
           order.products.forEach(
             item =>
-              (itemsTXT += `${item.prod_name}\tx ${item.quantity} units\ttotal:  ${item.prod_total.toFixed(2)} ILS\n\n`)
+              (itemsTXT += `${item.prod_name}\tx ${item.quantity} units\ttotal:  ${item.prod_total.toFixed(2)} $\n\n`)
           );
           let doc = new jsPDF();
           doc.setFontSize(22);
           doc.setFontStyle("bold");
-          doc.text("Thank you for shopping at ngMarket", 20, 20);
+          doc.text("Gracias por comprar en Mark Go", 20, 20);
           doc.setLineWidth(0.5);
           doc.line(0, 25, 500, 25);
           doc.setFontSize(12);
@@ -135,11 +134,10 @@ export class OrderFormComponent implements OnInit {
           doc.text("Order: " + order._id, 10, 35);
           doc.text(orderDates, 10, 45);
           doc.text(shipAddress, 10, 55);
-          doc.text("Customer details: " + userInfo, 10, 65);
-          doc.text("Credit card: ****-****-****-" + order.user.credit.slice(-4), 10, 75);
+          doc.text("Detalles de Cliente: " + userInfo, 10, 65);
           doc.line(0, 80, 500, 80);
           doc.setFontStyle("bold");
-          doc.text("Total price: " + order.total.toFixed(2) + " ILS", 10, 90);
+          doc.text("Total Valor: " + order.total.toFixed(2) + " ILS", 10, 90);
           doc.line(0, 95, 500, 95);
           doc.setFontStyle("normal");
           doc.text(itemsTXT, 10, 105);

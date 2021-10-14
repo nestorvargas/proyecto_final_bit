@@ -28,7 +28,7 @@
         type="password"
         name="password"
         class="form-control"
-        placeholder="Password"
+        placeholder="Contraseña"
         [ngClass]="{ 'is-invalid': password.errors && password.touched }"
         ngModel
         #password="ngModel"
@@ -46,7 +46,7 @@
         type="password"
         name="password2"
         class="form-control"
-        placeholder="Confirm Password"
+        placeholder="Confirmar Contraseña"
         [ngClass]="{ 'is-invalid': password2.errors && password2.touched }"
         ngModel
         #password2="ngModel"
@@ -66,13 +66,13 @@
         type="text"
         name="cardId"
         class="form-control"
-        placeholder="ID Number"
+        placeholder="Numero de Cedula"
         [ngClass]="{ 'is-invalid': cardId.errors && cardId.touched }"
         ngModel
         #cardId="ngModel"
         required
-        minlength="5"
-        maxlength="10"
+        minlength="9"
+        maxlength="12"
         pattern="^[0-9]+$"
       />
       <div [hidden]="!cardId.errors?.required" class="invalid-feedback">Se requiere el número de identificación</div>
@@ -87,7 +87,7 @@
         type="text"
         name="fname"
         class="form-control"
-        placeholder="First Name"
+        placeholder="Nombres"
         [ngClass]="{ 'is-invalid': fname.errors && fname.touched }"
         ngModel
         #fname="ngModel"
@@ -105,7 +105,7 @@
         type="text"
         name="lname"
         class="form-control"
-        placeholder="Last Name"
+        placeholder="Apellidos"
         [ngClass]="{ 'is-invalid': lname.errors && lname.touched }"
         ngModel
         #lname="ngModel"
@@ -130,7 +130,7 @@
         type="text"
         name="street"
         class="form-control"
-        placeholder="Street Address"
+        placeholder="Dirección de residencia"
         [ngClass]="{ 'is-invalid': street.errors && street.touched }"
         ngModel
         #street="ngModel"
