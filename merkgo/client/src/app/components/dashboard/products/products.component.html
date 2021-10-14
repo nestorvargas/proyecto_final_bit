@@ -7,14 +7,13 @@
 <!-- search bar -->
 <!-- fetching data from the server -->
 <div class="input-group mb-2 mx-auto" style="width:60%">
-  <input type="text" #searchProducts class="form-control" placeholder="Search for products..." />
+  <input type="text" #searchProducts class="form-control" placeholder="Buscar productos..." />
   <div class="input-group-append">
     <button (click)="onSearch(searchProducts.value)" class="btn btn-danger"><fa name="search"></fa></button>
   </div>
 </div>
 <!-- using pipe -->
 <!-- <input type="text" name="search" class="mb-2" placeholder="Search for products..." [(ngModel)]="filteredStatus" /> -->
-
 <!-- category bar -->
 <div class="d-flex flex-wrap justify-content-center p-1 bg-light">
   <button
@@ -26,7 +25,7 @@
     {{ category?.cat_name }}
   </button>
   <button type="button" (click)="onShowAllProducts()" class="px-2 m-2 btn btn-primary btn-sm">
-    Show All Products
+    Ver todos los productos
   </button>
 </div>
 
@@ -50,7 +49,7 @@
     </div>
 
     <img [src]="product.imageUrl" [alt]="product.prod_name" style="width:100%" class="p-1" />
-    <small>Price: {{ product.price | currency: "ILS":"symbol":"1.2-2" }}</small>
+    <small>Price: {{ product.price | currency: "$":"symbol":"1.2-2" }}</small>
     <h6 class="card-title text-danger">{{ product.prod_name }}</h6>
 
     <!-- Button to Open the Modal -->
@@ -61,7 +60,7 @@
       data-toggle="modal"
       [attr.data-target]="'#Modal' + product.id"
     >
-      <fa name="plus-circle" class="pr-2"></fa>Add Product
+      <fa name="plus-circle" class="pr-2"></fa>Agregar Productos
     </button>
     <!-- The Modal -->
     <div class="modal" [id]="'Modal' + product?.id">
@@ -80,11 +79,11 @@
                 <img [src]="product.imageUrl" [alt]="product.prod_name" class="img-fluid img-thumbnail" />
               </div>
               <div class="p-1">
-                <h6>Price /per unit</h6>
-                {{ product.price | currency: "ILS":"symbol":"1.2-2" }}
+                <h6>Precio por unidad</h6>
+                {{ product.price | currency: "$":"symbol":"1.2-2" }}
               </div>
               <div class="p-1">
-                <h6>Quantity</h6>
+                <h6>Cantidad</h6>
                 <input
                   id="quantity"
                   [(ngModel)]="product.quantity"
@@ -96,14 +95,14 @@
                 />
               </div>
               <div class="p-1">
-                <h6>Total Price</h6>
-                {{ product.price * product.quantity | currency: "ILS":"symbol":"1.2-2" }}
+                <h6>Total Precio</h6>
+                {{ product.price * product.quantity | currency: "$":"symbol":"1.2-2" }}
               </div>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
               <button type="button" (click)="onAddProductToCart(product)" class="btn btn-warning" data-dismiss="modal">
-                <fa name="cart-plus" class="mr-2"></fa>Add to Cart
+                <fa name="cart-plus" class="mr-2"></fa>Agregar
               </button>
             </div>
           </form>

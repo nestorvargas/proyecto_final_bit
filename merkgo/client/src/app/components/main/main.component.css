@@ -1,5 +1,5 @@
 .bg-info-mark-go {
-  background: linear-gradient(to bottom, #ffffffe0 0, #16a2b8 100%), url(/assets/images/fondo-seccion-info.jpg);
+  background: linear-gradient(to bottom, #16a2b8d9 0, #16a2b8 100%), url(/assets/images/fondo-seccion-info.jpg);
   background-attachment: local;
   background-size: contain;
 }

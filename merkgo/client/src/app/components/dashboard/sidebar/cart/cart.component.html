@@ -1,7 +1,7 @@
 <!-- resumen compra -->
 <div class="text-right p-1">
   <button *ngIf="user?.cart.items.length > 0 && isOrdered" (click)="onBackToShop()" class="btn btn-danger">
-    <fa name="chevron-circle-left" class="mr-2"></fa>Back to shop
+    <fa name="chevron-circle-left" class="mr-2"></fa>Volver a compras
   </button>
 </div>
 <!-- Loading -->
@@ -15,7 +15,7 @@
     type="text"
     name="search"
     class="form-control"
-    placeholder="Search for products on shopping cart"
+    placeholder="Buscar productos en el carrito de compras"
     [(ngModel)]="filteredStatus"
   />
 </div>

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   onLoginUser(form: NgForm) {
     if (!form.valid) {
       this.isEmpty = true;
-      this.warning = "Please fill all required fields";
+      this.warning = "Por favor llene todos los campos requeridos";
     } else {
       this.isLoading = true;
       let userLoginData = { email: form.controls.email.value, password: form.controls.password.value };
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         err => {
           this.isLoading = false;
           if (err.status) {
-            this.warning = "Could not login user. Please make sure e-mail and password";
+            this.warning = "No se pudo iniciar sesión. Por favor asegúrese que el correo electrónico y contraseña esten correctos.";
             this.isEmpty = true;
           } else this.onError();
         }
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     this.display = "none";
   }
   onError() {
-    this.modalHeader = "An Error Has Occurred";
+    this.modalHeader = "Error de conexión";
     this.modalBody = "Could not login user do to server communication problem. Please try again later.";
     this.openModal();
   }

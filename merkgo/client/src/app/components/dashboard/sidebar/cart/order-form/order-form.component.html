@@ -30,7 +30,7 @@
         </div>
         <!-- street -->
         <div class="form-group">
-          <label for="street">Street Address:</label>
+          <label for="street">Dirección:</label>
           <input
             type="text"
             name="street"
@@ -42,12 +42,12 @@
             minlength="2"
             required
           />
-          <div [hidden]="!street.errors?.required" class="invalid-feedback">Street is required</div>
-          <div [hidden]="!street.errors?.minlength" class="invalid-feedback">Address must be at least 2 characters</div>
+          <div [hidden]="!street.errors?.required" class="invalid-feedback">Dirección es obligatoria</div>
+          <div [hidden]="!street.errors?.minlength" class="invalid-feedback">La dirección debe tener al menos 2 caracteres</div>
         </div>
         <!-- shipping date -->
         <div class="form-group">
-          <label for="ship">Shipping Date:</label>
+          <label for="ship">Fecha de envio:</label>
           <input
             type="date"
             name="ship"
@@ -59,9 +59,9 @@
             min="getCurrentDate()"
             required
           />
-          <div [hidden]="!street.errors?.required" class="invalid-feedback">Shipping date is required</div>
+          <div [hidden]="!street.errors?.required" class="invalid-feedback">Se requiere la fecha de envío</div>
         </div>
-        <span><fa name="credit-card" class="mr-2"></fa>Payments</span>
+        <span><fa name="credit-card" class="mr-2"></fa>Metodo de Pago</span>
         <hr />
         <!-- credit card -->
         <div class="form-group">
@@ -74,7 +74,7 @@
             [ngClass]="{ 'is-invalid': credit.errors && credit.touched }"
             ngModel
             #credit="ngModel"
-            placeholder="Enter credit card number"
+            placeholder="Ingrese el número de la tarjeta de crédito"
             minlength="16"
             maxlength="16"
             pattern="^[0-9]+$"
@@ -87,7 +87,7 @@
           </div>
         </div>
         <!-- submit -->
-        <button type="submit" class="btn btn-dark"><fa name="check-circle" class="mr-2"></fa>Confirm & Pay</button>
+        <button type="submit" class="btn btn-dark"><fa name="check-circle" class="mr-2"></fa>Confirmar y Pagar</button>
       </form>
     </div>
   </div>
@@ -99,7 +99,7 @@
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header bg-dark text-white text-center">
-        <h4 class="modal-title" [innerHTML]="modalHeader ? modalHeader : 'Order has been processed successfully!'"></h4>
+        <h4 class="modal-title" [innerHTML]="modalHeader ? modalHeader : 'El pedido se ha procesado correctamente!'"></h4>
         <button type="button" class="close" data-dismiss="modal" routerLink="/">
           &times;
         </button>
@@ -112,13 +112,13 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        Click <button class="btn btn-danger" (click)="download()" routerLink="/">here</button> to download receipt
+        Click <button class="btn btn-danger" (click)="download()" routerLink="/">Recibo</button> para descargar
       </div>
       <div class="modal-body" *ngIf="modalBody" [innerHTML]="modalBody"></div>
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal" routerLink="/">
-          Close
+          Cerrar
         </button>
       </div>
     </div>
