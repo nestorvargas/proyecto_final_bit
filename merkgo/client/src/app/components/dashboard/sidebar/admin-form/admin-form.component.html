@@ -4,7 +4,7 @@
     <div *ngIf="isLoading" class="spinner-border text-danger" role="status">
       <span class="sr-only">Loading...</span>
     </div>
-    <h6 class="pl-2 mr-auto">{{ mode == "add" ? "Create Product" : "Edit Product" }}</h6>
+    <h6 class="pl-2 mr-auto">{{ mode == "add" ? "Crear Producto" : "Editar Producto" }}</h6>
     <button (click)="onAddProduct()" type="button" class="btn btn-dark mr-1"><fa name="plus"></fa></button>
     <button (click)="onDeleteProduct()" type="button" class="btn btn-danger"><fa name="trash"></fa></button>
   </div>
@@ -24,12 +24,12 @@
           id="prod_name"
           [(ngModel)]="currentProduct.prod_name"
           #prod_name="ngModel"
-          placeholder="Product Name"
+          placeholder="Nombre de Producto"
         />
       </div>
       <!-- image -->
       <div class="form-group">
-        <h6><small class="text-muted">Please upload only files of type .JPEG, .JPG, or .PNG</small></h6>
+        <h6><small class="text-muted">Por favor utilizar el tipo de formato .JPEG, .JPG, or .PNG</small></h6>
         <input
           type="file"
           (change)="onFileSelected($event)"
@@ -38,7 +38,7 @@
           #pickedFile
         />
         <button type="button" (click)="pickedFile.click()" class="btn btn-dark">
-          <fa name="image" class="mr-2"></fa>Pick File
+          <fa name="image" class="mr-2"></fa>Subir Imagen
         </button>
         <span class="ml-3">{{ selectedFile?.name | shorten: 15 }}</span>
       </div>
@@ -51,12 +51,13 @@
           id="price"
           [(ngModel)]="currentProduct.price"
           #price="ngModel"
-          placeholder="Price"
+          placeholder="Precio"
         />
       </div>
       <!-- category -->
       <div class="form-group">
         {{ selectedCategory }}
+        <label>Categoria de Producto</label>
         <select
           type="text"
           name="category"
@@ -69,20 +70,20 @@
         </select>
       </div>
       <!-- submit button -->
-      <button type="submit" class="btn btn-danger">{{ mode == "add" ? "Add Product" : "Update Product" }}</button>
+      <button type="submit" class="btn btn-success">{{ mode == "add" ? "Crear Producto" : "Actualizar Producto" }}</button>
     </form>
     <!-- category form -->
     <div class="card bg-light p-3 mt-3">
       <form #categoryForm="ngForm" (ngSubmit)="onAddCategory(categoryForm)">
         <div class="form-group">
-          <strong>Can't find the category you need?</strong><br />Add a new one to the scroll list!
+          <strong>¿No puede encontrar la categoría que necesita?</strong><br />¡Agregue uno nuevo a la lista!
         </div>
         <div class="form-group">
           <input
             type="text"
             name="category_add"
             id="category_add"
-            placeholder="New Category"
+            placeholder="Nueva Categoria"
             class="form-control"
             [ngClass]="{ 'is-invalid': category_add.errors && category_add.touched }"
             ngModel
@@ -90,13 +91,13 @@
             required
             minlength="2"
           />
-          <div [hidden]="!category_add.errors?.required" class="invalid-feedback">Category field is required</div>
+          <div [hidden]="!category_add.errors?.required" class="invalid-feedback">El campo de categoría es obligatorio</div>
           <div [hidden]="!category_add.errors?.minlength" class="invalid-feedback">
-            Category must be at least 2 characters
+            La categoría debe tener al menos 2 caracteres
           </div>
         </div>
         <!-- submit button -->
-        <button type="submit" class="btn btn-warning">Add Category</button>
+        <button type="submit" class="btn btn-warning">Agregar Categorias</button>
       </form>
     </div>
   </div>
