@@ -1,0 +1,84 @@
+<div class="container card bg-light p-2 my-2 ">
+  <!-- loading -->
+  <div *ngIf="isLoading" class="spinner-border text-danger" role="status"><span class="sr-only">Cargando...</span></div>
+  <!-- form -->
+  <form #loginForm="ngForm" (ngSubmit)="onLoginUser(loginForm)" *ngIf="!isLoading" class="form-login" novalidate>
+    <div class="col-md-12 text-center">
+      <img src="./assets/images/login.png" class="img-fluid" style="width:100px;" alt="login" />
+      <br>
+      <br>
+      <blockquote class="blockquote">
+          <h2 class="login-text">
+            Entrar Usuario
+          </h2>
+      </blockquote>
+    </div>
+
+
+
+    <div *ngIf="isEmpty" class="alert alert-danger alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>{{ warning }}
+    </div>
+    <!-- email -->
+    <div class="form-group">
+      <input
+        type="email"
+        name="email"
+        [ngClass]="{ 'is-invalid': emailInput.errors && emailInput.touched }"
+        class="form-control"
+        placeholder="E-Mail"
+        ngModel
+        #emailInput="ngModel"
+        required
+        pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      />
+      <div [hidden]="!emailInput.errors?.required" class="invalid-feedback">Email es requerido</div>
+      <div [hidden]="!emailInput.errors?.pattern" class="invalid-feedback">Email no es valido</div>
+    </div>
+    <!-- password -->
+    <div class="form-group">
+      <input
+        type="password"
+        name="password"
+        [ngClass]="{ 'is-invalid': passwordInput.errors && passwordInput.touched }"
+        class="form-control"
+        placeholder="Password"
+        ngModel
+        #passwordInput="ngModel"
+        required
+        minlength="4"
+      />
+      <div [hidden]="!passwordInput.errors?.required" class="invalid-feedback">La contraseña es requerida</div>
+      <div [hidden]="!passwordInput.errors?.minlength" class="invalid-feedback">
+        La contraseña debe tener al menos 4 caracteres.
+      </div>
+    </div>
+    <!-- submit -->
+    <div class="col-md-12 text-center">
+      <button type="submit" class="btn btn-info">Acceder a merk go</button>
+    </div>
+  </form>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="loginModal" [ngStyle]="{ display: display }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header bg-dark text-white text-center">
+        <h4 class="modal-title" [innerHTML]="modalHeader ? modalHeader : 'Success!'"></h4>
+        <button type="button" (click)="onCloseHandled()" class="close" data-dismiss="modal" routerLink="/">
+          &times;
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body" *ngIf="modalBody" [innerHTML]="modalBody"></div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" (click)="onCloseHandled()" class="btn btn-danger" data-dismiss="modal" routerLink="/">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
