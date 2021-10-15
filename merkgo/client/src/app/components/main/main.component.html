@@ -1,32 +1,41 @@
 <div class="row">
   <div class="col-md-8 border bg-light py-2">
     <h1 class="text-$ gris-900 text-center m-4 py-3 " ><fa name="shopping-cart" class="pr-2"></fa>Merk Go</h1>
-    <p class="m-12 text-center alert-dark .font-italic">
+    <p class="m-12 text-center alert-dark py-2" id="slogan">
       Tu Mercado Virtual / En minutos a la puerta de tu casa o negocio.
     </p>
     <p class="text-center">
-      <img class="img-fluid" width="1000px"
-        src="./assets/images/delivery.jpg"
-        class="img-fluid rounded border p-2 "
+      <img class="img-fluid" width="700px"
+        src="./assets/images/entrega.jpg"
+        class="img-fluid rounded border p-2"
         alt="Products Info"
       />
     </p>
   </div>
+
+
   <div *ngIf="!authService.loggedIn()" class="col-md-4 container-fluid ">
     <div class="col-md-12">
       <app-login></app-login>
     </div>
   </div>
-  <div class="col-md bg-info-mark-go p-4  py-5">
+  <div class="container-fluid "id="banner">
+      <div>
+          <p class="todo">Todo a un solo</p>
+          <p class="todo1">CLICK</p>
+      </div>
+
+  </div>
+  <div class="col-md bg-info-mark-go p-4 py-5 m-5">
     <div class="row text-center">
       <div class="col-md-4">
-        <p class="mx-4 .lead " ><img src="./assets/images/clothes.jpg" class="img-fluid rounded" alt="Products Info" />Encuentra las ultimas colecciones en calzado y vestuario</p>
+        <p class="mx-4 .lead " id="especificaciones" ><img src="./assets/images/clothes.jpg" class="img-fluid rounded" id="opciones" alt="Products Info" />Encuentra las ultimas colecciones en calzado y vestuario</p>
       </div>
       <div class="col-md-4">
-        <p class="mx-4 .lead " ><img src="./assets/images/abarrotes.jpg" class="img-fluid rounded"  alt="Products Info" /> Todo lo relacionado para el hogar</p>
+        <p class="mx-4 .lead " id="especificaciones" ><img src="./assets/images/abarrotes.jpg" class="img-fluid rounded " id="opciones" alt="Products Info" /> Todo lo relacionado para el hogar</p>
       </div>
       <div class="col-md-4">
-        <p class="mx-4 .lead " ><img src="./assets/images/Uvas.jpg" class="img-fluid rounded"  alt="Products Info" />Frutas y verduras frescas</p>
+        <p class="mx-4 .lead " id="especificaciones" ><img src="./assets/images/Uvas.jpg" class="img-fluid rounded" id="opciones" alt="Products Info" />Frutas y verduras frescas</p>
       </div>
 
     </div>

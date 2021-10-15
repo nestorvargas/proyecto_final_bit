@@ -3,3 +3,46 @@
   background-attachment: local;
   background-size: contain;
 }
+#slogan{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.mx-4 .lead{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-top: 5px;
+}
+
+/*#opciones{
+border-radius:50%;
+width:500px;
+height:500px;
+}*/
+
+#banner{
+  background: #00d2ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 50px;
+}
+.todo{
+  font-family: 'Vidaloka', serif;
+  font-size: 60px;
+  text-align: center;
+  color: black;
+}
+.todo1{
+  font-family: 'Vidaloka', serif;
+  font-size: 80px;
+  text-align:center;
+  color:white;
+  display:flexbox;
+  padding-left: 5px;
+
+}
+
+#especificaciones{
+  padding:20px;
+}
+
+
