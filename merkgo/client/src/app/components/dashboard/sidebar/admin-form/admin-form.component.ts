@@ -199,11 +199,11 @@ export class AdminFormComponent implements OnInit, OnChanges {
         return false;
       }
       if (form.pristine) {
-        this.warning = "Please fill all required fields";
+        this.warning = "Por favor llene todos los campos requeridos";
         return false;
       }
       if (((prod_name && !prod_name.trim()) || (category && !category.trim()) || price) && form.pristine) {
-        this.warning = "Please fill all required fields";
+        this.warning = "Por favor llene todos los campos requeridos";
         return false;
       }
       if (prod_name.length < 2 || form.controls.prod_name.pristine) {

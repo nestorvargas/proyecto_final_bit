@@ -51,11 +51,11 @@ export class OrderFormComponent implements OnInit {
       !this.checkShipDate(form.controls.ship.value)
     ) {
       this.isEmpty = true;
-      this.warning = "Please fill all required fields";
-      if (!this.checkCreditCard(form.controls.credit.value) && form.valid)
-        this.warning = "Credit cart number is invalid";
+      this.warning = "Por favor llene los campos requeridos";
+      if (this.checkCreditCard(form.controls.credit.value) && form.valid)
+        this.warning = "Numero de tarjeta ";
       if (!this.checkShipDate(form.controls.ship.value) && form.valid)
-        this.warning = "Shipping date is invalid, must be current date or follow it";
+        this.warning = "La fecha de envío no es válida, debe ser la fecha actual o una fecha mayor";
       this.display = "none";
     } else {
       this.isLoading = true;
@@ -76,7 +76,7 @@ export class OrderFormComponent implements OnInit {
             takenDates = allShipDates.filter(shipDate => dates.filter(date => date == shipDate).length > 2);
             if (takenDates.length > 0) isTaken = takenDates.filter(date => date === ship).length > 0;
             if (isTaken) {
-              this.warning = `Shipping on ${this.adjustDate(ship)} is already booked for 3 orders, pick another date`;
+              this.warning = `Envio en ${this.adjustDate(ship)} ya está reservado para 3 pedidos, elige otra fecha`;
               this.isEmpty = true;
               this.display = "none";
             } else
@@ -195,8 +195,8 @@ export class OrderFormComponent implements OnInit {
   })([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]);
 
   onError() {
-    this.modalHeader = "An Error Has Occurred";
-    this.modalBody = "Could not proccess your order do to server communication problem. Please try again later.";
+    this.modalHeader = "Se produjo un error";
+    this.modalBody = "No se pudo procesar su pedido debido a un problema de comunicación con el servidor. Por favor, inténtelo de nuevo más tarde.";
     this.openModal();
   }
 }
