@@ -19,7 +19,7 @@
   >
     {{ category?.cat_name }}
   </button>
-  <button type="button" (click)="onShowAllProducts()" class="px-2 m-2 btn btn-primary btn-sm">
+  <button type="button" (click)="onShowAllProducts()" class="px-2 m-2 btn btn-primary btn-sm" id="elegir">
     Ver todos los productos
   </button>
 </div>
@@ -27,7 +27,7 @@
 <div *ngIf="products" class="d-flex flex-wrap justify-content-center border">
   <div *ngIf="products.length == 0" class="text-center m-4">
     <h3>There are no products</h3>
-    <button class="btn btn-outline-primary" (click)="onShowAllProducts()">Go back to full product list</button>
+    <button class="btn btn-outline-primary" id="elegir" (click)="onShowAllProducts()">Go back to full product list</button>
   </div>
 
   <div
@@ -50,7 +50,7 @@
     <button
       *ngIf="!user?.role && !orderStatus"
       type="button"
-      class="btn btn-danger"
+      class="btn btn-danger "id="elegir"
       data-toggle="modal"
       [attr.data-target]="'#Modal' + product.id"
     >
@@ -63,7 +63,7 @@
           <!-- Modal Header -->
           <div class="modal-header btn-danger">
             <h4 class="modal-title">{{ product.prod_name }}</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" id="elegir"data-dismiss="modal">&times;</button>
           </div>
           <!-- Modal form -->
           <form>
@@ -113,7 +113,7 @@
       <!-- Modal Header -->
       <div class="modal-header bg-dark text-white text-center">
         <h4 class="modal-title" [innerHTML]="modalHeader ? modalHeader : 'Success!'"></h4>
-        <button type="button" class="close" data-dismiss="modal" routerLink="/">
+        <button type="button" class="close" id="elegir"data-dismiss="modal" routerLink="/">
           &times;
         </button>
       </div>
@@ -121,7 +121,7 @@
       <div class="modal-body" *ngIf="modalBody" [innerHTML]="modalBody"></div>
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" routerLink="/">
+        <button type="button" class="btn btn-danger" id="elegir" data-dismiss="modal" routerLink="/">
           Cerrar
         </button>
       </div>
