@@ -24,7 +24,18 @@ input[type="text"]:focus {
   width: 100px;
 }
 #elegir{
-  background-color: rgb(55, 184, 189);
+  background-color: #42c6e4;
   color: white;
   border-color: white;
 }
+
+#categories{
+  background-color: white;
+  color:#42c6e4;
+  border-color: #42c6e4;
+}
+#verproductos{
+  background-color:blue;
+  color: white;
+}
+

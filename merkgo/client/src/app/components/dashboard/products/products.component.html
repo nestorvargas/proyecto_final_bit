@@ -5,9 +5,9 @@
 </div>
 <!-- search bar -->
 <div class="input-group mb-2 mx-auto" style="width:60%">
-  <input type="text" #searchProducts class="form-control" placeholder="Buscar productos..." />
+  <input type="text" #searchProducts class="form-control border-top-0 border-left-0 border-right-0 border border-info" placeholder="Buscar productos..." />
   <div class="input-group-append">
-    <button (click)="onSearch(searchProducts.value)" class="btn btn-danger"><fa name="search"></fa></button>
+    <button (click)="onSearch(searchProducts.value)" class="btn btn-info border-radius-50"><fa name="search"></fa></button>
   </div>
 </div>
 <div class="d-flex flex-wrap justify-content-center p-1 bg-light">
@@ -15,19 +15,19 @@
     *ngFor="let category of categories"
     (click)="onCategorySelected(category.cat_name)"
     type="button"
-    class="px-2 m-2 btn btn-dark btn-sm"
+    class="px-2 m-2 btn btn-dark btn-sm"id="categories"
   >
     {{ category?.cat_name }}
   </button>
-  <button type="button" (click)="onShowAllProducts()" class="px-2 m-2 btn btn-primary btn-sm" id="elegir">
+  <button type="button" (click)="onShowAllProducts()" class="px-2 m-2 btn btn-primary btn-sm" id="verproductos">
     Ver todos los productos
   </button>
 </div>
 <!-- productos -->
 <div *ngIf="products" class="d-flex flex-wrap justify-content-center border">
   <div *ngIf="products.length == 0" class="text-center m-4">
-    <h3>There are no products</h3>
-    <button class="btn btn-outline-primary" id="elegir" (click)="onShowAllProducts()">Go back to full product list</button>
+    <h3>No hay productos</h3>
+    <button class="btn btn-outline-primary" id="elegir" (click)="onShowAllProducts()">Volver a la lista completa de productos</button>
   </div>
 
   <div
@@ -61,7 +61,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <!-- Modal Header -->
-          <div class="modal-header btn-danger">
+          <div class="modal-header" id="elegir">
             <h4 class="modal-title">{{ product.prod_name }}</h4>
             <button type="button" class="close" id="elegir"data-dismiss="modal">&times;</button>
           </div>
@@ -69,7 +69,7 @@
           <form>
             <!-- Modal body -->
             <div class="modal-body d-flex flex-row justify-content-around align-content-center align-items-center">
-              <div class="p-1" style="width:100px">
+              <div class="p-1"  style="width:100px">
                 <img [src]="product.imageUrl" [alt]="product.prod_name" class="img-fluid img-thumbnail" />
               </div>
               <div class="p-1">
