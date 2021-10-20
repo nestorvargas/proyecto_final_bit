@@ -1,0 +1,81 @@
+<!-- spinner -->
+<div *ngIf="isLoading" class="spinner-border text-danger" role="status"><span class="sr-only">Loading...</span></div>
+<!-- regular user -->
+<div *ngIf="!user?.role">
+  <div *ngIf="user?.cart.status == 'new'">
+    <h5>Hola {{ user?.fname }}!</h5>
+    <p>List@ para comenzar tu primera compra?</p>
+  </div>
+  <div *ngIf="user?.cart.status !== 'new'">
+    <h5>Bienvenido de nuevo {{ user?.fname }}!</h5>
+    <!-- pending cart -->
+    <div *ngIf="user?.cart.status == 'open' || user?.cart.status == 'pending'">
+      <p>
+        Tienes un carrito abierto de <strong>{{ user?.cart.created | date: "medium" }}</strong>
+      </p>
+      <p>por la cantidad total de {{ total | currency: "$":"symbol":"1.2-2" }}</p>
+    </div>
+    <!-- closed cart -->
+    <p *ngIf="user?.cart.status == 'closed'">
+      Tu última compra fue en <strong>{{ orders?.user.order | date: "medium" }}</strong>
+    </p>
+  </div>
+  <button class="btn btn-danger mb-2" routerLink="/dashboard">Volver a Carrito de Compra</button>
+  <!-- view last purchase -->
+  <div *ngIf="user?.cart.status == 'closed'" class="mt-1">
+    <button type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-target="#demo">
+      Ver última compra
+    </button>
+    <div id="demo" class="collapse p-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of orders?.products">
+            <td>{{ product?.prod_name }}</td>
+            <td>{{ product?.quantity }}</td>
+            <td>{{ product?.prod_total | currency: "$":"symbol":"1.2-2" }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <strong>Por la cantidad total de: {{ orders?.total | currency: "$":"symbol":"1.2-2" }}</strong>
+    </div>
+  </div>
+</div>
+
+<br>
+<!-- admin -->
+<div *ngIf="user?.role">
+  <div class="alert alert-secondary" role="alert">
+    Hola, Marker go Administrador
+  </div>
+  <button class="btn btn-warning mb-2" routerLink="/dashboard">Ir a panel de adminsitración</button>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="notificationPanelModal" [ngStyle]="{ display: display }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header bg-dark text-white text-center">
+        <h4 class="modal-title" [innerHTML]="modalHeader ? modalHeader : 'Success!'"></h4>
+        <button type="button" (click)="onCloseHandled()" class="close" data-dismiss="modal" routerLink="/">
+          &times;
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body" *ngIf="modalBody" [innerHTML]="modalBody"></div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" (click)="onCloseHandled()" class="btn btn-danger" data-dismiss="modal" routerLink="/">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
